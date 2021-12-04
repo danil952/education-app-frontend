@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
 
-import { auth } from 'api/auth'
+import { auth, registerUser } from 'api/auth'
 
 import styles from './auth.module.css'
 
@@ -14,6 +14,12 @@ const AuthPage = () => {
 	const [password, setPassword] = useState('')
 	const [fio, setFio] = useState('')
 	const [error, setError] = useState('')
+	const [success, setSuccess] = useState('')
+
+	useEffect(()=>{
+		window.localStorage.removeItem('token')
+		window.localStorage.removeItem('login')
+	}, [])
 
 	const handleAuth = async () => {
 		if (!(login && password)) return
@@ -23,7 +29,20 @@ const AuthPage = () => {
 			router.push('/user')
 		} catch (error) {
 			setError(error.data)
-			setTimeout(()=>setError(''), 1500)
+			setTimeout(() => setError(''), 1500)
+			console.log(error)
+		}
+	}
+
+	const handleRegister = async () => {
+		if (!(login && password && fio)) return
+		try {
+			const userInfo = await registerUser(login, password, fio)
+			setSuccess('Регистрация прошла успешно')
+			setTimeout(() => setSuccess(''), 1500)
+		} catch (error) {
+			setError(error.data)
+			setTimeout(() => setError(''), 1500)
 			console.log(error)
 		}
 	}
@@ -73,12 +92,16 @@ const AuthPage = () => {
 				/>
 			</div>
 			<button
-				onClick={()=>handleAuth()}
+				onClick={() => {
+					if(page == 0)handleAuth()
+					if(page == 1)handleRegister()
+				}}
 				className={styles.authPage__formButton}
 			>
 				{page == 0 ? 'Войти' : 'Регистрация'}
 			</button>
 			{error && <p className={styles.authPage__errorText}>{error}</p>}
+			{success && <p className={styles.authPage__successText}>{success}</p>}
 		</div>
 	)
 }

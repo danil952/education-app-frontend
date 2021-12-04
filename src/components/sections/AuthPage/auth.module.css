@@ -5,8 +5,9 @@
     height: auto;
     padding: 2rem;
     background-color: aliceblue;
+    border-radius: 1rem;
     margin: 0 auto;
-    margin-top: 20rem;
+    margin-top: 15rem;
 }
 
 .authPage__title {
@@ -71,6 +72,13 @@
 
 .authPage__errorText {
     color: red;
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: 600;
+}
+
+.authPage__successText {
+    color: green;
     font-size: 1.4em;
     text-align: center;
     font-weight: 600;

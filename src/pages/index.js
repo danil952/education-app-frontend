@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react'
 
-import AuthPage from '@/sections/AuthPage'
+import Layout from '@/components/Layout'
 
 const Index = () => {
-
-	return (
-		<div>
-			<AuthPage />
-		</div>
-	)
+	return <Layout></Layout>
 }
 
 export default Index
