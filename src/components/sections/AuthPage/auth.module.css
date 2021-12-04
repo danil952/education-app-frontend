@@ -1,0 +1,77 @@
+.authPage__container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: auto;
+    padding: 2rem;
+    background-color: aliceblue;
+    margin: 0 auto;
+    margin-top: 20rem;
+}
+
+.authPage__title {
+    font-size: 2.4em;
+    color: black;
+}
+
+.authPage__controls {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.authPage__controls p {
+    font-size: 1.6em;
+    background-color:cornflowerblue;
+    padding: 0.5em;
+    color: white;
+    border-radius: 1em;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.authPage__controls .authPage__controlsActive {
+    padding: 1em;
+}
+
+.authPage__divider {
+    height: 0.1em;
+    width: 100%;
+    background-color: white;
+}
+
+.authPage__form p {
+    font-size: 1.4em;
+    color: black;
+    font-weight: 700;
+}
+
+.authPage__form input {
+    background-color: white;
+    border-radius: 1rem;
+    height: 4rem;
+    border: none;
+    width: 60%;
+    padding-left: 1rem;
+}
+
+.authPage__formButton {
+    font-size: 2em;
+    padding: 0.5rem;
+    width: 18rem;
+    margin: 0 auto;
+    margin-top: 5rem;
+    background-color:cornflowerblue;
+    color: white;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.authPage__errorText {
+    color: red;
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: 600;
+}

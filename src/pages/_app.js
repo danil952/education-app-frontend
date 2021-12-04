@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component }) {
 	return (
-		<Component {...pageProps} />
+		<Component />
 	)
 }
 
