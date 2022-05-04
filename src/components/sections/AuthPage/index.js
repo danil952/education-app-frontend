@@ -16,17 +16,17 @@ const AuthPage = () => {
 	const [error, setError] = useState('')
 	const [success, setSuccess] = useState('')
 
-	useEffect(()=>{
+	useEffect(() => {
 		window.localStorage.removeItem('token')
 		window.localStorage.removeItem('login')
+		window.localStorage.removeItem('userType')
 	}, [])
 
 	const handleAuth = async () => {
 		if (!(login && password)) return
 		try {
-			const userInfo = await auth(login, password)
-			console.log(userInfo)
-			router.push('/user')
+			await auth(login, password)
+			router.push('/')
 		} catch (error) {
 			setError(error.data)
 			setTimeout(() => setError(''), 1500)
@@ -37,7 +37,7 @@ const AuthPage = () => {
 	const handleRegister = async () => {
 		if (!(login && password && fio)) return
 		try {
-			const userInfo = await registerUser(login, password, fio)
+			await registerUser(login, password, fio)
 			setSuccess('Регистрация прошла успешно')
 			setTimeout(() => setSuccess(''), 1500)
 		} catch (error) {
@@ -93,8 +93,8 @@ const AuthPage = () => {
 			</div>
 			<button
 				onClick={() => {
-					if(page == 0)handleAuth()
-					if(page == 1)handleRegister()
+					if (page == 0) handleAuth()
+					if (page == 1) handleRegister()
 				}}
 				className={styles.authPage__formButton}
 			>

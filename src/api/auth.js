@@ -11,9 +11,11 @@ export const getAuthHeaders = () => {
 export const getAuthInfo = () => {
 	const token = window.localStorage.getItem('token')
 	const login = window.localStorage.getItem('login')
+	const userType = window.localStorage.getItem('userType')
 	return {
 		login,
 		token,
+		userType
 	}
 }
 
@@ -31,6 +33,7 @@ export const auth = async (login, password) => {
 	if (request.ok) {
 		window.localStorage.setItem('token', result.token)
 		window.localStorage.setItem('login', result.login)
+		window.localStorage.setItem('userType', result.type)
 		return result
 	} else {
 		return Promise.reject(result || request.statusText)
