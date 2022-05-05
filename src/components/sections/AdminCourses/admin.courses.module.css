@@ -1,0 +1,162 @@
+.adminCourses__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 6rem 1.5rem;
+	box-sizing: border-box;
+}
+
+.adminCourses__courseBlock {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 1.5rem 2rem;
+	margin-bottom: 2rem;
+	border-radius: 1rem;
+	background-color: aliceblue;
+}
+
+.adminCourses__courseInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.adminCourses__courseInfo > p {
+	margin-right: 2rem;
+	font-size: 2rem;
+	color: cornflowerblue;
+}
+
+.adminCourses__courseInfo > p > span {
+	font-weight: 700;
+}
+
+.adminCourses__courseControls {
+	display: flex;
+	align-items: center;
+}
+
+.adminCourses__new {
+	font-size: 2.4rem;
+	font-weight: 700;
+	padding: 0.5rem;
+	margin-bottom: 2rem;
+	width: 25rem;
+	height: 5.2rem;
+	background-color: cornflowerblue;
+	color: white;
+	border-radius: 1rem;
+	border: none;
+	cursor: pointer;
+}
+
+.adminCourses__edit {
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 0.5rem;
+	margin-right: 2rem;
+	width: 10rem;
+	height: 5.2rem;
+	background-color: cornflowerblue;
+	color: white;
+	border-radius: 1rem;
+	border: none;
+	cursor: pointer;
+}
+
+.adminCourses__delete {
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 0.5rem;
+	width: 10rem;
+	height: 5.2rem;
+	background-color: red;
+	color: white;
+	border-radius: 1rem;
+	border: none;
+	cursor: pointer;
+}
+
+.newCourse__submit {
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 0.5rem;
+	margin-top: 2rem;
+	width: 100%;
+	height: 5.2rem;
+	background-color: cornflowerblue;
+	color: white;
+	border-radius: 1rem;
+	border: none;
+	cursor: pointer;
+}
+
+.newCourse__form {
+	width: 50%;
+	max-height: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	background-color: aliceblue;
+	transition: max-height 1s ease-in-out;
+	transition: padding 0.1s ease-in-out;
+	border-radius: 1rem;
+	box-sizing: border-box;
+}
+
+.newCourse__form_open {
+	max-height: 100rem;
+	padding: 2rem;
+	margin-bottom: 6rem;
+}
+
+.newCourse__form p,
+.adminCourses__editForm p {
+	font-size: 1.6rem;
+	color: cornflowerblue;
+	font-weight: 700;
+}
+
+.newCourse__form input,
+.newCourse__form textarea,
+.newCourse__form select,
+.adminCourses__editForm input,
+.adminCourses__editForm textarea,
+.adminCourses__editForm select {
+	background-color: white;
+	border-radius: 1rem;
+	height: 4rem;
+	border: none;
+	width: 100%;
+	padding-left: 1rem;
+	resize: vertical;
+}
+
+.adminCourses__editForm {
+	width: 50%;
+	overflow: hidden;
+	display: flex;
+	padding: 2rem;
+	margin-bottom: 2rem;
+	flex-direction: column;
+	background-color: aliceblue;
+	transition: max-height 1s ease-in-out;
+	transition: padding 0.1s ease-in-out;
+	border-radius: 1rem;
+	box-sizing: border-box;
+}
+
+.adminCourses__editForm_submit {
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 0.5rem;
+	margin-top: 2rem;
+	width: 100%;
+	height: 5.2rem;
+	background-color: cornflowerblue;
+	color: white;
+	border-radius: 1rem;
+	border: none;
+	cursor: pointer;
+}
