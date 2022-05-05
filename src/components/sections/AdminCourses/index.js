@@ -183,6 +183,12 @@ const CourseRaw = ({ course, professorsData, fetchData }) => {
 		</div>
 	) : (
 		<div className={styles.adminCourses__editForm}>
+			<p
+				className={styles.adminCourses__editForm_close}
+				onClick={() => setEditOpen(false)}
+			>
+				X
+			</p>
 			<p>Edit course: {course.name}</p>
 			<p>Name</p>
 			<input
@@ -201,7 +207,6 @@ const CourseRaw = ({ course, professorsData, fetchData }) => {
 				value={selectedProfessor}
 				onChange={(e) => {
 					setSelectedProfessor(e.target.value)
-					console.log(e.target.value)
 				}}
 			>
 				{professorsData.map((professor) => {
