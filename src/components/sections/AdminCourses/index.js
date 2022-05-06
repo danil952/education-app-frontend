@@ -183,12 +183,12 @@ const CourseRaw = ({ course, professorsData, fetchData }) => {
 		</div>
 	) : (
 		<div className={styles.adminCourses__editForm}>
-			<p
+			<span
 				className={styles.adminCourses__editForm_close}
 				onClick={() => setEditOpen(false)}
 			>
 				X
-			</p>
+			</span>
 			<p>Edit course: {course.name}</p>
 			<p>Name</p>
 			<input
