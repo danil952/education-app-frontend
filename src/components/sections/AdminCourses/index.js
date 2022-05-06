@@ -6,7 +6,7 @@ import {
 	updateCourse,
 	deleteCourse,
 } from '@/api/courses'
-import { getProfessorsInfo } from '@/api/professors'
+import { getProfessorsInfo } from '@/api/users'
 
 import styles from './admin.courses.module.css'
 
@@ -146,7 +146,7 @@ const CourseRaw = ({ course, professorsData, fetchData }) => {
 
 	const onDeleteCourse = async () => {
 		try {
-			await deleteCourse(course._id, name, description, selectedProfessor)
+			await deleteCourse(course._id)
 			await fetchData()
 		} catch (error) {
 			console.log(error)
