@@ -26,7 +26,7 @@ const AuthPage = () => {
 		if (!(login && password)) return
 		try {
 			await auth(login, password)
-			router.push('/')
+			router.push(`/user/${login}`)
 		} catch (error) {
 			setError(error.data)
 			setTimeout(() => setError(''), 1500)

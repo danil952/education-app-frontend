@@ -20,6 +20,9 @@ const Layout = (props) => {
 		student: [
 			{ name: 'courses', link: '/courses' },
 		],
+		professor: [
+			{ name: 'courses', link: '/courses' },
+		],
 	}
 
 	useEffect(() => {

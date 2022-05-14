@@ -17,7 +17,7 @@ const Header = ({ login, actionsData }) => {
 			</div>
 			<div>
 				{login && (
-					<Link href='/user'>
+					<Link href={`/user/${login}`}>
 						<a>{login}</a>
 					</Link>
 				)}

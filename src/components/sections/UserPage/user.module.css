@@ -1,22 +1,41 @@
-.userPage__container {
+.user__container {
     display: flex;
-    width: 100%;
+    justify-content: center;
+    padding-top: 10rem;
 }
 
-.userPage__info {
-    width: calc(100% / 3);
-    height: 100vh;
-    border: 0.1rem solid rgb(120, 190, 255);
+.user__infoContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: ghostwhite;
-    color: black;
-    font-size: 3em;
-    font-weight: 700;
+    max-width: 40rem;
+    width: calc(100% - 3rem);
+    height: auto;
+    padding: 2rem;
+    background-color: aliceblue;
+    border-radius: 1rem;
+    margin: 0 auto;
 }
 
-.userPage__info span {
-    font-size: 1.2rem;
+.user__infoContainer > p  {
+    margin: 1.2rem;
+    font-size: 2rem;
+    color: cornflowerblue;
+    font-weight: 600;
+}
+
+.user__infoContainer > p > span {
+    font-weight: 400;
+}
+
+.user__editButton {
+    font-size: 2em;
+    padding: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 5rem;
+    background-color:cornflowerblue;
+    color: white;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
 }

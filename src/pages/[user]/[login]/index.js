@@ -6,14 +6,11 @@ import UserPage from '@/components/sections/UserPage'
 
 const User = () => {
 	const router = useRouter()
-	const [token, setToken] = useState('')
-	useEffect(() => {
-		setToken(window.localStorage.getItem('token'))
-	}, [])
+	const { login } = router.query
 
 	return (
 		<Layout>
-			<UserPage />
+			<UserPage login={login} />
 		</Layout>
 	)
 }

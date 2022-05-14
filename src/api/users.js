@@ -41,6 +41,38 @@ export const deleteUser = async (_userId) => {
 	return result
 }
 
+export const getUserInfo = async (login) => {
+	const { apiUrl } = getUrl()
+
+	const request = await fetch(`${apiUrl}/users/info/${login}`)
+	const result = await request.json()
+
+	if (!request.ok) {
+		return Promise.reject(result)
+	}
+
+	return result
+}
+
+export const createNewProfessor = async (login, fio, password) => {
+	const { apiUrl } = getUrl()
+	const request = await fetch(`${apiUrl}/users/professors`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			...getAuthHeaders(),
+		},
+		body: JSON.stringify({ login, fio, password }),
+	})
+	const result = await request.json()
+
+	if (request.ok) {
+		return result
+	} else {
+		return Promise.reject(result || request.statusText)
+	}
+}
+
 export const getProfessorsInfo = async () => {
 	const { apiUrl } = getUrl()
 
