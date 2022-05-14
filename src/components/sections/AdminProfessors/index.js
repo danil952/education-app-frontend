@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getProfessorsInfo, updateUser } from '@/api/users'
+import { getProfessorsInfo, updateUser, deleteUser } from '@/api/users'
 
 import styles from './admin.professors.module.css'
 
@@ -54,12 +54,12 @@ const ProfessorRaw = ({ professor, fetchData }) => {
 	}
 
 	const onDeleteProfessor = async () => {
-		/* try {
-			await deleteCourse(course._id, name, description, selectedProfessor)
+		try {
+			await deleteUser(professor._id)
 			await fetchData()
 		} catch (error) {
 			console.log(error)
-		} */
+		}
 	}
 
 	return !editOpen ? (
