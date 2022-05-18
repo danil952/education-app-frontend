@@ -15,6 +15,24 @@ export const getCoursesInfo = async () => {
 	return result
 }
 
+export const getCoursesInfoByProfessor = async () => {
+	const { apiUrl } = getUrl()
+
+	const request = await fetch(`${apiUrl}/courses/professor`, {
+		headers: {
+			'Content-Type': 'application/json',
+			...getAuthHeaders(),
+		},
+	})
+	const result = await request.json()
+
+	if (!request.ok) {
+		return Promise.reject(result)
+	}
+
+	return result
+}
+
 export const createNewCourse = async (name, description, _teacherId) => {
 	const { apiUrl } = getUrl()
 

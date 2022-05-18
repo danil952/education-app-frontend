@@ -13,16 +13,12 @@ const Layout = (props) => {
 	const [userType, setUserType] = useState('')
 	const actions = {
 		admin: [
-			{ name: 'courses', link: '/edit-courses' },
-			{ name: 'professors', link: '/edit-professors' },
-			{ name: 'statistics', link: '/statistics' },
+			{ name: 'courses', link: '/admin-courses' },
+			{ name: 'professors', link: '/admin-professors' },
+			{ name: 'statistics', link: '/admin-statistics' },
 		],
-		student: [
-			{ name: 'courses', link: '/courses' },
-		],
-		professor: [
-			{ name: 'courses', link: '/courses' },
-		],
+		student: [{ name: 'courses', link: '/courses' }],
+		professor: [{ name: 'courses', link: '/professor-courses' }],
 	}
 
 	useEffect(() => {
