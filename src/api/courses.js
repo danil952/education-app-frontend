@@ -33,6 +33,24 @@ export const getCoursesInfoByProfessor = async () => {
 	return result
 }
 
+export const getCoursesInfoByStudent = async () => {
+	const { apiUrl } = getUrl()
+
+	const request = await fetch(`${apiUrl}/studentsCourses/subscribe`, {
+		headers: {
+			'Content-Type': 'application/json',
+			...getAuthHeaders(),
+		},
+	})
+	const result = await request.json()
+
+	if (!request.ok) {
+		return Promise.reject(result)
+	}
+
+	return result
+}
+
 export const createNewCourse = async (name, description, _teacherId) => {
 	const { apiUrl } = getUrl()
 
@@ -87,6 +105,26 @@ export const deleteCourse = async (_courseId) => {
 			'Content-Type': 'application/json',
 			...getAuthHeaders(),
 		},
+	})
+	const result = await request.json()
+
+	if (!request.ok) {
+		return Promise.reject(result)
+	}
+
+	return result
+}
+
+export const subscribeCourse = async (_courseId) => {
+	const { apiUrl } = getUrl()
+
+	const request = await fetch(`${apiUrl}/studentsCourses`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			...getAuthHeaders(),
+		},
+		body: JSON.stringify({ _courseId }),
 	})
 	const result = await request.json()
 
