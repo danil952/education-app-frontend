@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import {
 	getCoursesInfoByStudent,
 	getCoursesInfo,
@@ -8,6 +9,7 @@ import {
 import styles from './user.courses.module.css'
 
 const UserCourses = () => {
+	const router = useRouter()
 	const [userCourses, setUserCourses] = useState([])
 	const [freeCourses, setFreeCourses] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -61,7 +63,7 @@ const UserCourses = () => {
 							<p>
 								Professor: <span>{course.teacher.fio}</span>
 							</p>
-							<button>
+							<button onClick={() => router.push(`/course/${course._courseId}`)}>
 								SHOW COURSE
 							</button>
 						</div>
