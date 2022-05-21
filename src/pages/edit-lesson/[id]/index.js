@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '@/components/Layout'
 import EditLesson from '@/components/sections/EditLesson'
 
-const User = () => {
+const EditLessonPage = () => {
 	return (
 		<Layout>
 			<EditLesson />
@@ -11,4 +11,4 @@ const User = () => {
 	)
 }
 
-export default User
+export default EditLessonPage

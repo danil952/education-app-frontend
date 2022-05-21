@@ -1,25 +1,23 @@
 import { useState, useEffect, useRef } from 'react'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { updateLessonById } from '@/api/lessons'
+import dynamic from 'next/dynamic'
 
 const importJodit = () => import('jodit-react')
 const JoditEditor = dynamic(importJodit, {
 	ssr: false,
 })
 
-import { getLessonInfoById } from '@/api/lessons'
+import { createLesson } from '@/api/lessons'
 
-import styles from './edit.lesson.module.css'
+import styles from './create.lesson.module.css'
 
-const EditLesson = () => {
+const CreateLesson = () => {
 	const router = useRouter()
 	const { id } = router.query
 
 	const editor = useRef(null)
-	const [loading, setLoading] = useState(true)
+	const [name, setName] = useState('')
 	const [content, setContent] = useState('')
-	const [lesson, setLesson] = useState({})
 	const [keys, setKeys] = useState([])
 	const config = {
 		readonly: false,
@@ -28,44 +26,30 @@ const EditLesson = () => {
 		toolbarSticky: false,
 	}
 
-	const fetchData = async () => {
+	const onCreateNewLesson = async () => {
 		try {
-			const data = await getLessonInfoById(id)
-			setLesson(data)
-			setContent(data.lecture)
-			setKeys(data.keys)
-			console.log(data)
-		} catch (error) {
-			console.log(error)
-		} finally {
-			setLoading(false)
-		}
-	}
-
-	const onUpdateLesson = async () => {
-		try {
-			const updatedLesson = {
+			const data = {
 				lecture: content,
-				keys: keys,
-				_courseId: lesson._courseId,
+				name,
+				_courseId: id,
+				keys,
 			}
-			await updateLessonById(updatedLesson, lesson._id)
+
+			await createLesson(data)
+			router.push('/professor-courses')
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	useEffect(() => {
-		if (id) fetchData()
-	}, [id])
-
-	return loading ? (
-		<div>Loading</div>
-	) : (
-		<div className={styles.editLesson__container}>
-			<h4 className={styles.editLesson__title}>
-				Lecture: №{lesson.indexNumber} {lesson.name}
-			</h4>
+	return (
+		<div className={styles.newLesson__container}>
+			<h4 className={styles.newLesson__title}>New lesson</h4>
+			<input
+				value={name}
+				onChange={(e) => setName(e.target.value)}
+				placeholder='New lesson name'
+			/>
 			<JoditEditor
 				ref={editor}
 				value={content}
@@ -73,11 +57,11 @@ const EditLesson = () => {
 				onBlur={(newContent) => setContent(newContent)}
 				onChange={(newContent) => {}}
 			/>
-			<h4 className={styles.editLesson__title}>Practice keys:</h4>
+			<h4 className={styles.newLesson__title}>Practice keys:</h4>
 			{keys.length > 0 &&
 				keys.map((value, id) => {
 					return (
-						<div key={id} className={styles.editLesson__keyBlock}>
+						<div key={id} className={styles.newLesson__keyBlock}>
 							<span>№{id + 1}</span>
 							<textarea
 								value={keys[id]}
@@ -87,7 +71,7 @@ const EditLesson = () => {
 								}}
 							/>
 							<button
-								className={styles.editLesson__deletePractice}
+								className={styles.newLesson__deletePractice}
 								onClick={() => {
 									setKeys([...keys.filter((key, idx) => idx != id)])
 								}}
@@ -98,7 +82,7 @@ const EditLesson = () => {
 					)
 				})}
 			<button
-				className={styles.editLesson__newPractice}
+				className={styles.newLesson__newPractice}
 				onClick={(e) => {
 					keys.push('')
 					setKeys([...keys])
@@ -107,13 +91,14 @@ const EditLesson = () => {
 				+
 			</button>
 			<button
-				className={styles.editLesson__save}
-				onClick={() => onUpdateLesson()}
+				className={styles.newLesson__save}
+				onClick={() => onCreateNewLesson()}
+				disabled={!name || !content}
 			>
-				SAVE CHANGES
+				CREATE LESSON
 			</button>
 		</div>
 	)
 }
 
-export default EditLesson
+export default CreateLesson

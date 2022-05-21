@@ -12,7 +12,6 @@ const ProfessorCourses = () => {
 	const fetchData = async () => {
 		const data = await getCoursesInfoByProfessor()
 		setCourses(data)
-		console.log(data)
 	}
 
 	useEffect(() => {
@@ -64,7 +63,12 @@ const CourseRow = ({ data }) => {
 			</div>
 			{isOpen && (
 				<div className={styles.lessons__container}>
-					<button className={styles.lessons__new}>NEW LESSON</button>
+					<button
+						className={styles.lessons__new}
+						onClick={() => router.push(`/new-lesson/${data._id}`)}
+					>
+						NEW LESSON
+					</button>
 					{data.lessonsData.map((lesson, id) => (
 						<div className={styles.lesson__block} key={id}>
 							<div className={styles.lesson__info}>
