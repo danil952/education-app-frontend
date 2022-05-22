@@ -54,6 +54,24 @@ export const getUserInfo = async (login) => {
 	return result
 }
 
+export const getUserScores = async () => {
+	const { apiUrl } = getUrl()
+
+	const request = await fetch(`${apiUrl}/scores`, {
+		headers: {
+			'Content-Type': 'application/json',
+			...getAuthHeaders(),
+		},
+	})
+	const result = await request.json()
+
+	if (!request.ok) {
+		return Promise.reject(result)
+	}
+
+	return result
+}
+
 export const createNewProfessor = async (login, fio, password) => {
 	const { apiUrl } = getUrl()
 	const request = await fetch(`${apiUrl}/users/professors`, {

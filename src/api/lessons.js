@@ -68,3 +68,25 @@ export const createLesson = async (data) => {
 	return result
 }
 
+export const sendPracticeAnswers = async (data) => {
+	const { apiUrl } = getUrl()
+
+	const request = await fetch(`${apiUrl}/scores/`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			...getAuthHeaders(),
+		},
+		body: JSON.stringify(data),
+	})
+	const result = await request.json()
+
+	if (!request.ok) {
+		return Promise.reject(result)
+	}
+
+	return result
+}
+
+
+

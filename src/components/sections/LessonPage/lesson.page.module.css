@@ -39,7 +39,7 @@
 .lessonPage__keyBlock > textarea {
 	border: 0.2rem solid cornflowerblue;
 	color: cornflowerblue;
-    font-size: 2rem;
+	font-size: 2rem;
 	background-color: white;
 	border-radius: 1rem;
 	height: 4rem;
@@ -60,4 +60,22 @@
 	border-radius: 1rem;
 	border: none;
 	cursor: pointer;
+}
+
+.lessonPage__submit:disabled {
+	opacity: 0.6;
+}
+
+.lessonPage__successText {
+	font-size: 3.2rem;
+	color: greenyellow;
+	font-weight: 700;
+	margin: 2rem 0;
+}
+
+.lessonPage__errorText {
+	font-size: 3.2rem;
+	color: red;
+	font-weight: 700;
+	margin: 2rem 0;
 }

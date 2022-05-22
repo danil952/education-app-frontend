@@ -17,7 +17,10 @@ const Layout = (props) => {
 			{ name: 'professors', link: '/admin-professors' },
 			{ name: 'statistics', link: '/admin-statistics' },
 		],
-		student: [{ name: 'courses', link: '/courses' }],
+		student: [
+			{ name: 'courses', link: '/courses' },
+			{ name: 'scores', link: '/user-scores' },
+		],
 		professor: [{ name: 'courses', link: '/professor-courses' }],
 	}
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { getLessonInfoById } from '@/api/lessons'
+import { getLessonInfoById, sendPracticeAnswers } from '@/api/lessons'
 
 import styles from './lesson.page.module.css'
 
@@ -9,6 +9,8 @@ const LessonPage = () => {
 	const [lesson, setLesson] = useState({})
 	const [loading, setLoading] = useState(true)
 	const [answers, setAnswers] = useState([])
+	const [successText, setSuccessText] = useState('')
+	const [errorText, setErrorText] = useState('')
 	const { id } = router.query
 
 	const fetchData = async () => {
@@ -24,6 +26,21 @@ const LessonPage = () => {
 			console.log(error)
 		} finally {
 			setLoading(false)
+		}
+	}
+
+	const sendAnswers = async () => {
+		try {
+			const data = {
+				_lessonId: lesson._id,
+				answerData: answers,
+			}
+			const markData = await sendPracticeAnswers(data)
+			setSuccessText(`Your mark is: ${markData.mark} of ${lesson.keys.length}`)
+		} catch (error) {
+			setSuccessText('')
+			console.log(error)
+			setErrorText(error.data)
 		}
 	}
 
@@ -60,9 +77,19 @@ const LessonPage = () => {
 						)
 					})}
 			</div>
-			<button className={styles.lessonPage__submit} onClick={() => {}}>
-				SUBMIT ANSWERS
-			</button>
+			{lesson.keys.length > 0 && (
+				<button
+					className={styles.lessonPage__submit}
+					onClick={() => sendAnswers()}
+					disabled={answers.length !== lesson.keys.length}
+				>
+					SUBMIT ANSWERS
+				</button>
+			)}
+			{successText && (
+				<p className={styles.lessonPage__successText}>{successText}</p>
+			)}
+			{errorText && <p className={styles.lessonPage__errorText}>{errorText}</p>}
 		</div>
 	)
 }

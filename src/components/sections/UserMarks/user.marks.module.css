@@ -1,0 +1,41 @@
+.userMarks__container {
+	padding: 5rem 8rem 10rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.userMarks__markBlock {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(147, 184, 253, 0.411);
+	padding: 1.5rem 2rem;
+	margin-top: 2rem;
+	border-radius: 1rem;
+}
+
+.userMarks__markBlock p {
+    font-size: 2rem;
+	color: cornflowerblue;
+	font-weight: 700;
+	margin-right: 2rem;
+}
+
+.userMarks__lessonInfo {
+    display: flex;
+    align-items: center;
+}
+
+.userMarks__markView {
+    font-size: 2rem;
+	font-weight: 700;
+	padding: 0.5rem;
+	width: 10rem;
+	height: 5.2rem;
+	background-color: cornflowerblue;
+	color: white;
+	border-radius: 1rem;
+	border: none;
+	cursor: pointer;
+}
