@@ -2,10 +2,10 @@ import fetch from 'isomorphic-unfetch'
 import { getUrl } from './helpers'
 import { getAuthHeaders } from './auth'
 
-export const getLessonsInfo = async (_courseId) => {
+export const getLessonInfoById = async (_id) => {
 	const { apiUrl } = getUrl()
 
-	const request = await fetch(`${apiUrl}/lessons/course/${_courseId}`)
+	const request = await fetch(`${apiUrl}/lessons/${_id}`)
 	const result = await request.json()
 
 	if (!request.ok) {
@@ -15,10 +15,15 @@ export const getLessonsInfo = async (_courseId) => {
 	return result
 }
 
-export const getLessonInfoById = async (_id) => {
+export const getLessonsMarks = async () => {
 	const { apiUrl } = getUrl()
 
-	const request = await fetch(`${apiUrl}/lessons/${_id}`)
+	const request = await fetch(`${apiUrl}/lessons/marks`, {
+		headers: {
+			'Content-Type': 'application/json',
+			...getAuthHeaders(),
+		},
+	})
 	const result = await request.json()
 
 	if (!request.ok) {
@@ -87,6 +92,3 @@ export const sendPracticeAnswers = async (data) => {
 
 	return result
 }
-
-
-

@@ -1,0 +1,68 @@
+.stats__container {
+	padding: 5rem 8rem 10rem;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.stats__block {
+    position: relative;
+    width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(147, 184, 253, 0.411);
+	padding: 1.5rem 2rem;
+    padding-right: 10rem;
+	margin-top: 2rem;
+	border-radius: 1rem;
+}
+
+.stats__markBlock {
+    width: calc(100% - 10rem);
+	display: flex;
+	align-items: center;
+	background-color: rgba(147, 184, 253, 0.411);
+	padding: 1.5rem 2rem;
+	margin-top: 2rem;
+	border-radius: 1rem;
+}
+
+.stats__block p {
+	font-size: 2rem;
+	color: cornflowerblue;
+}
+
+.stats__markBlock p {
+    font-size: 2rem;
+    margin-right: 2rem;
+	color: cornflowerblue;
+}
+
+.stats__markBlock p span {
+    font-weight: 700;
+}
+
+.stats__openButton {
+    position: absolute;
+    right: 2rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+	color: white;
+	background-color: cornflowerblue;
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+    transform: rotate(90deg);
+    border: none;
+	cursor: pointer;
+}
+
+.stats__openButton_active {
+    transform: rotate(270deg);
+}
